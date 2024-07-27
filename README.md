@@ -4,6 +4,8 @@
     <img src="images/logo.jpg" width=275 />
 </p>
 
+<font color=#FFOOOO size=4>This is a revised version code in windows 11 and cpu environment.</font>
+
 Automatic formulaic alpha generation with reinforcement learning.
 
 Paper *Generating Synergistic Formulaic Alpha Collections via Reinforcement Learning* accepted by [KDD 2023](https://kdd.org/kdd2023/), Applied Data Science (ADS) track.
