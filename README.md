@@ -12,6 +12,18 @@ Paper *Generating Synergistic Formulaic Alpha Collections via Reinforcement Lear
 
 Paper available on [ACM DL](https://dl.acm.org/doi/10.1145/3580305.3599831) or [arXiv](https://arxiv.org/abs/2306.12964).
 
+## Other environment conditions
+
+- OS: Windows-10-10.0.22631-SP0 10.0.22631
+- Python: 3.8.19
+- Stable-Baselines3: 2.0.0
+- PyTorch: 2.0.1+cpu
+- GPU Enabled: False
+- Numpy: 1.23.5
+- Cloudpickle: 2.2.1
+- Gymnasium: 0.28.1
+- OpenAI Gym: 0.26.2
+
 ## How to reproduce?
 
 Note that you can either use our builtin alpha calculation pipeline(see Choice 1), or implement an adapter to your own pipeline(see Choice 2).
