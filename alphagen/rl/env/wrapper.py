@@ -76,6 +76,8 @@ class AlphaEnvWrapper(gym.Wrapper):
     def action_masks(self) -> np.ndarray:
         res = np.zeros(SIZE_ACTION, dtype=bool)
         valid = self.env.valid_action_types()
+        #print(self.env._builder.stack)
+        #print(valid['op'])
         for i in range(OFFSET_OP, OFFSET_OP + SIZE_OP):
             if valid['op'][OPERATORS[i - OFFSET_OP].category_type()]:
                 res[i - 1] = True
@@ -90,6 +92,7 @@ class AlphaEnvWrapper(gym.Wrapper):
                 res[i - 1] = True
         if valid['select'][4]:  # SEP
             res[OFFSET_SEP - 1] = True
+        #print(res)
         return res
 
 

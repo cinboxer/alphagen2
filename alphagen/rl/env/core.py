@@ -1,3 +1,8 @@
+# import sys
+# print(sys.path)
+# sys.path.append(r'C:/jiaobaocheng/7.26alphagen/alphagen')
+# sys.path.append(r'C:/jiaobaocheng/7.26alphagen')
+
 from typing import Tuple, Optional
 import gymnasium as gym
 import math
@@ -101,3 +106,18 @@ class AlphaEnvCore(gym.Env):
 
     def render(self, mode='human'):
         pass
+
+if __name__ == '__main__':
+    env = AlphaEnvCore(AlphaPoolBase)
+    tokens = [
+        ConstantToken(30.0),
+        FeatureToken(FeatureType.OPEN),
+        OperatorToken(Add)
+    ]
+
+    env._builder = ExpressionBuilder()
+    for token in tokens:
+        env._builder.add_token(token)
+    print(env._builder.get_tree())
+    print(env._builder.validate_op(RollingOperator))
+    print(env._valid_action_types())

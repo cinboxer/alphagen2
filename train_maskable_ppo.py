@@ -121,7 +121,7 @@ def main(
         ic_lower_bound=None,
         l1_alpha=5e-3
     )
-    env = AlphaEnv(pool=pool, device=device, print_expr=True)
+    env = AlphaEnv(pool=pool, device=device, print_expr=False) # print_expr is True -> print expr for evaluation
 
     name_prefix = f"new_{instruments}_{pool_capacity}_{seed}"
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')

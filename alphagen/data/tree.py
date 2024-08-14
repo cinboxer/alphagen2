@@ -1,3 +1,8 @@
+# import sys
+# print(sys.path)
+# sys.path.append(r'C:/jiaobaocheng/7.26alphagen/alphagen')
+# sys.path.append(r'C:/jiaobaocheng/7.26alphagen')
+
 from alphagen.data.expression import *
 from alphagen.data.tokens import *
 
@@ -15,7 +20,9 @@ class ExpressionBuilder:
             raise InvalidExpressionException(f"Expected only one tree, got {len(self.stack)}")
 
     def add_token(self, token: Token):
+        print(self.stack)
         if not self.validate(token):
+            print('vv')
             raise InvalidExpressionException(f"Token {token} not allowed here, stack: {self.stack}.")
         if isinstance(token, OperatorToken):
             n_args: int = token.operator.n_args()
@@ -37,6 +44,7 @@ class ExpressionBuilder:
 
     def validate(self, token: Token) -> bool:
         if isinstance(token, OperatorToken):
+            #print('op')
             return self.validate_op(token.operator)
         elif isinstance(token, DeltaTimeToken):
             return self.validate_dt()
@@ -45,10 +53,12 @@ class ExpressionBuilder:
         elif isinstance(token, FeatureToken):
             return self.validate_feature()
         else:
+            print('else')
             assert False
 
     def validate_op(self, op: Type[Operator]) -> bool:
         if len(self.stack) < op.n_args():
+            #print(0)
             return False
 
         if issubclass(op, UnaryOperator):
@@ -98,6 +108,12 @@ if __name__ == '__main__':
         FeatureToken(FeatureType.CLOSE),
         OperatorToken(Div),
         OperatorToken(Add),
+    ]
+    tokens = [
+        ConstantToken(30.0),
+        FeatureToken(FeatureType.OPEN),
+        OperatorToken(Add),
+        OperatorToken(EMA)
     ]
 
     builder = ExpressionBuilder()

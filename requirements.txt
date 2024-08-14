@@ -13,3 +13,4 @@ tqdm
 loguru
 requests
 pyqlib
+pandera == 0.20.3
